@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kloroplast – Fotosentez</title>
+<style>
+:root{color-scheme:dark;--bg:#07140f;--card:#0e2219;--line:#1d3b2c;--tx:#e8f5ee;--mu:#8fb5a0;--g:#4ade80;--y:#fbbf24;--b:#38bdf8;--r:#fb7185;--o:#f59e0b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;overflow-x:hidden}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;gap:6px;justify-content:center;padding:10px;background:rgba(7,20,15,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav a{color:var(--mu);text-decoration:none;font-size:13px;padding:6px 14px;border-radius:99px;transition:.3s}
+nav a:hover{background:var(--card);color:var(--tx)}
+section{max-width:960px;margin:0 auto;padding:72px 20px}
+h1{font-size:clamp(34px,7vw,64px);margin:0;letter-spacing:-1.5px;line-height:1.05}
+h2{font-size:clamp(26px,4.5vw,40px);margin:0 0 8px;letter-spacing:-1px}
+.tag{display:inline-block;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-bottom:12px}
+p.s{color:var(--mu);margin:0 0 28px;max-width:560px}
+.hero{text-align:center;padding-top:48px}
+.hero p{color:var(--mu);margin:14px auto 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:12px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+svg{display:block;width:100%;height:auto}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.chip{font-size:13px;padding:6px 12px;border-radius:99px;border:1px solid var(--line);background:#0b1b14;display:flex;align-items:center;gap:7px;animation:pop 3s ease-in-out infinite}
+.chip i{width:9px;height:9px;border-radius:50%;display:block}
+.chip:nth-child(2){animation-delay:.4s}.chip:nth-child(3){animation-delay:.8s}.chip:nth-child(4){animation-delay:1.2s}.chip:nth-child(5){animation-delay:1.6s}
+@keyframes pop{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px);border-color:var(--g)}}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s ease}.rv.in{opacity:1;transform:none}
+.spin{transform-origin:center;transform-box:fill-box;animation:spin 40s linear infinite}
+.spinr{transform-origin:center;transform-box:fill-box;animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.flow{stroke-dasharray:8 8;animation:dash 1s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-16}}
+.pulse{animation:pls 2.4s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes pls{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.15);opacity:1}}
+.rise{animation:rise 3s ease-in infinite}
+@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(-90px);opacity:0}}
+.glow{animation:gl 2s ease-in-out infinite}
+@keyframes gl{0%,100%{opacity:.25}50%{opacity:1}}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}nav a{padding:6px 9px;font-size:12px}}
+.cmp{padding:22px;border-radius:20px;border:1px solid var(--line);background:var(--card);transition:.4s}
+.cmp:hover{transform:translateY(-6px);border-color:var(--g)}
+.cmp h3{margin:0 0 4px;font-size:20px}.cmp small{color:var(--mu)}
+.row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;align-items:center;font-size:14px}
+.row b{color:var(--mu);font-weight:500;width:56px}
+.p{padding:3px 10px;border-radius:99px;background:#0b1b14;border:1px solid var(--line);font-size:13px}
+footer{text-align:center;color:var(--mu);font-size:12px;padding:30px}
+.stp{fill:#0e2219;stroke:#1d3b2c;animation:hl 6s infinite}@keyframes hl{0%,30%{stroke:#4ade80;fill:#14532d}36%,100%{stroke:#1d3b2c;fill:#0e2219}}
+[data-from],[data-at]{opacity:0;transition:opacity .6s}[data-from].on,[data-at].on{opacity:1}
+.cap{display:flex;gap:16px;align-items:flex-start;margin-top:16px;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.cap .n{flex:none;width:42px;height:42px;border-radius:50%;background:var(--g);color:#052e16;font-weight:800;display:grid;place-items:center;font-size:20px}
+.cap h3{margin:0 0 4px;font-size:19px}.cap p{margin:0 0 8px;color:var(--mu)}.cap code{background:#0b1b14;border:1px solid var(--line);padding:4px 10px;border-radius:8px;color:var(--y);font-size:14px}
+.ctl{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px}
+.ctl button{background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:99px;padding:8px 16px;font-size:15px;cursor:pointer;transition:.3s}.ctl button:hover{border-color:var(--g)}
+#dts{display:flex;gap:8px}#dts i{width:12px;height:12px;border-radius:50%;background:var(--line);cursor:pointer;transition:.3s}#dts i.a{background:var(--g);transform:scale(1.3)}
+.leg{margin-top:16px;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--card)}.leg h3{margin:0 0 12px;font-size:16px}
+.lg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.lg div{display:grid;grid-template-columns:22px 1fr;column-gap:10px;align-items:center;font-size:14px}
+.lg b{font-weight:600}.lg span{grid-column:2;color:var(--mu);font-size:13px}.lg i{display:block;width:18px;height:18px;border:2px solid;border-radius:5px}.lg i.dt{border:0;border-radius:50%}
+.big{display:flex;gap:10px;align-items:stretch;justify-content:center;flex-wrap:wrap;margin-bottom:28px}.big>div:not(.ar){flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:3px;text-align:center}.big .mid{border-color:var(--g)}.big small{color:var(--g);letter-spacing:2px;font-size:11px}.big b{font-size:18px}.big span{color:var(--mu);font-size:13px}.big .ar{align-self:center;font-size:28px;color:var(--g);animation:nudge 1.4s ease-in-out infinite}@keyframes nudge{50%{transform:translateX(6px)}}
+.steps{display:grid;gap:28px}.st{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;align-items:center}.st:nth-child(even) .tx{order:2}
+.st .num{width:44px;height:44px;border-radius:50%;background:var(--g);color:#052e16;font-weight:800;display:grid;place-items:center;font-size:22px;margin-bottom:10px}.st h3{margin:0 0 6px;font-size:22px}.st p{margin:0 0 12px;color:var(--mu);font-size:16px}.st code{display:inline-block;background:#0b1b14;border:1px solid var(--line);padding:6px 12px;border-radius:10px;color:var(--y);font-size:15px}
+@media(max-width:700px){.st{grid-template-columns:1fr}.st:nth-child(even) .tx{order:0}.big .ar{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<nav><a href="#top">Kloroplast</a><a href="#isik">Işığa Bağımlı</a><a href="#calvin">Bağımsız Evre</a><a href="#baglanti">Bağlantı</a><a href="#ozet">Özet</a></nav>
+
+<section class="hero" id="top">
+<span class="tag">Biyoloji · Fotosentez</span>
+<h1>Kloroplast</h1>
+<p>Yapraktaki küçük fabrika: ışık enerjisi besine dönüşür.</p><div class="chips" style="justify-content:center"><span class="chip"><i style="background:var(--g)"></i>Granum → ışığa bağımlı evre</span><span class="chip"><i style="background:var(--y)"></i>Stroma → ışıktan bağımsız evre</span></div>
+<div class="card rv" style="margin-top:36px">
+<svg viewBox="0 0 800 360" aria-label="Kloroplast">
+<defs>
+<radialGradient id="sun"><stop offset="0" stop-color="#fff3b0"/><stop offset="1" stop-color="#fbbf24"/></radialGradient>
+<linearGradient id="chl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14532d"/><stop offset="1" stop-color="#166534"/></linearGradient>
+<linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4ade80"/><stop offset="1" stop-color="#16a34a"/></linearGradient>
+</defs>
+<g class="spin" style="animation-duration:30s"><g stroke="#fbbf24" stroke-width="4" stroke-linecap="round" opacity=".7">
+<line x1="90" y1="20" x2="90" y2="0"/><line x1="90" y1="160" x2="90" y2="180"/><line x1="10" y1="90" x2="-10" y2="90"/><line x1="170" y1="90" x2="190" y2="90"/>
+<line x1="33" y1="33" x2="19" y2="19"/><line x1="147" y1="147" x2="161" y2="161"/><line x1="147" y1="33" x2="161" y2="19"/><line x1="33" y1="147" x2="19" y2="161"/></g></g>
+<circle cx="90" cy="90" r="46" fill="url(#sun)" class="pulse"/>
+<g stroke="#fbbf24" stroke-width="2" class="flow" opacity=".8" fill="none"><path d="M130 120 L330 190"/><path d="M120 135 L300 230"/><path d="M140 105 L370 160"/></g>
+<ellipse cx="520" cy="210" rx="250" ry="130" fill="url(#chl)" stroke="#4ade80" stroke-width="3"/>
+<ellipse cx="520" cy="210" rx="236" ry="116" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4 6" class="flow"/>
+<g id="gs" fill="url(#gr)" stroke="#bbf7d0" stroke-width="1.5">
+<g class="pulse" style="animation-delay:.2s"><rect x="390" y="170" width="70" height="12" rx="6"/><rect x="390" y="186" width="70" height="12" rx="6"/><rect x="390" y="202" width="70" height="12" rx="6"/><rect x="390" y="218" width="70" height="12" rx="6"/></g>
+<g class="pulse" style="animation-delay:.9s"><rect x="520" y="140" width="70" height="12" rx="6"/><rect x="520" y="156" width="70" height="12" rx="6"/><rect x="520" y="172" width="70" height="12" rx="6"/><rect x="520" y="188" width="70" height="12" rx="6"/></g>
+<g class="pulse" style="animation-delay:1.5s"><rect x="590" y="230" width="70" height="12" rx="6"/><rect x="590" y="246" width="70" height="12" rx="6"/><rect x="590" y="262" width="70" height="12" rx="6"/></g>
+</g>
+<text x="425" y="258" fill="#bbf7d0" font-size="22" font-weight="700" text-anchor="middle">Granum</text>
+<text x="540" y="318" fill="#86efac" font-size="22" font-weight="700" text-anchor="middle">Stroma</text>
+</svg></div>
+</section>
+
+<section id="isik">
+<span class="tag rv">1 · Granum</span>
+<h2 class="rv">Işığa Bağımlı Evre</h2>
+<p class="s rv">Amaç: ışık enerjisini ATP ve NADPH adlı enerji taşıyıcılarına depolamak.</p>
+<div class="big rv"><div><small>GİRDİ</small><b>Işık · H₂O</b><span>NADP⁺ · ADP + Pᵢ</span></div><div class="ar">→</div><div class="mid"><small>NEREDE?</small><b>Granum</b><span>Tilakoit zarlar</span></div><div class="ar">→</div><div><small>ÇIKTI</small><b>O₂ · NADPH · ATP</b><span>NADPH + ATP → Calvin</span></div></div>
+<div class="steps"><div class="st rv"><div class="tx"><div class="num">1</div><h3>Işık yakalanır</h3><p>Yapraktaki yeşil madde (klorofil) güneş ışığını yakalar. Işık enerjisi elektronlara (e⁻) geçer.</p><code>Işık + klorofil → enerjili e⁻</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="Işık yakalanır"><g class="spin" style="animation-duration:20s"><g stroke="#fbbf24" stroke-width="4" stroke-linecap="round"><line x1="60" y1="14" x2="60" y2="28"/><line x1="60" y1="92" x2="60" y2="106"/><line x1="14" y1="60" x2="28" y2="60"/><line x1="92" y1="60" x2="106" y2="60"/></g></g><circle cx="60" cy="60" r="26" fill="url(#sun)" class="pulse"/><text x="60" y="135" font-size="18" fill="#fbbf24" text-anchor="middle" font-weight="700">Işık</text><path d="M95 80 L200 130 M100 60 L260 120" stroke="#fbbf24" stroke-width="3" fill="none" class="flow"/><rect x="170" y="125" width="230" height="80" rx="20" fill="#14532d" stroke="#4ade80" stroke-width="3"/><text x="285" y="175" font-size="18" fill="#bbf7d0" text-anchor="middle" font-weight="700">Klorofil (yeşil madde)</text><circle cx="285" cy="95" r="14" fill="#fbbf24" class="pulse"/><text x="310" y="100" font-size="17" fill="#fbbf24" text-anchor="start" font-weight="700">enerjili e⁻</text></svg></div></div><div class="st rv"><div class="tx"><div class="num">2</div><h3>Su parçalanır</h3><p>Kaybedilen elektronların yerini doldurmak için su parçalanır. Buna fotoliz denir. Oksijen havaya çıkar.</p><code>2H₂O → 4H⁺ + 4e⁻ + O₂</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="Su parçalanır"><text x="75" y="125" font-size="40" fill="#38bdf8" text-anchor="middle" font-weight="700">H₂O</text><text x="75" y="155" font-size="17" fill="#8fb5a0" text-anchor="middle" font-weight="500">su</text><rect x="250" y="25" width="160" height="44" rx="14" fill="#0b1b14" stroke="#fb7185" stroke-width="2.5"/><circle cx="272" cy="47" r="8" fill="#fb7185"/><text x="290" y="53" font-size="18" fill="#fb7185" text-anchor="start" font-weight="700">O₂ (havaya)</text><rect x="250" y="98" width="160" height="44" rx="14" fill="#0b1b14" stroke="#38bdf8" stroke-width="2.5"/><circle cx="272" cy="120" r="8" fill="#38bdf8"/><text x="290" y="126" font-size="18" fill="#38bdf8" text-anchor="start" font-weight="700">H⁺</text><rect x="250" y="171" width="160" height="44" rx="14" fill="#0b1b14" stroke="#fbbf24" stroke-width="2.5"/><circle cx="272" cy="193" r="8" fill="#fbbf24"/><text x="290" y="199" font-size="18" fill="#fbbf24" text-anchor="start" font-weight="700">e⁻</text><path d="M125 120 L240 47" stroke="#fb7185" stroke-opacity=".35" stroke-width="2" stroke-dasharray="4 5" fill="none"/><circle r="6" fill="#fb7185"><animateMotion dur="2.2s" begin="0s" repeatCount="indefinite" path="M125 120 L240 47"/><animate attributeName="opacity" values="1;1;0" dur="2.2s" begin="0s" repeatCount="indefinite"/></circle><path d="M125 120 L240 120" stroke="#38bdf8" stroke-opacity=".35" stroke-width="2" stroke-dasharray="4 5" fill="none"/><circle r="6" fill="#38bdf8"><animateMotion dur="2.2s" begin="0.7s" repeatCount="indefinite" path="M125 120 L240 120"/><animate attributeName="opacity" values="1;1;0" dur="2.2s" begin="0.7s" repeatCount="indefinite"/></circle><path d="M125 120 L240 193" stroke="#fbbf24" stroke-opacity=".35" stroke-width="2" stroke-dasharray="4 5" fill="none"/><circle r="6" fill="#fbbf24"><animateMotion dur="2.2s" begin="1.4s" repeatCount="indefinite" path="M125 120 L240 193"/><animate attributeName="opacity" values="1;1;0" dur="2.2s" begin="1.4s" repeatCount="indefinite"/></circle></svg></div></div><div class="st rv"><div class="tx"><div class="num">3</div><h3>Elektronlar enerji bırakır</h3><p>Elektronlar bir zincir (ETS) boyunca ilerler. Bıraktıkları enerji H⁺'ları depoya (lümen) pompalar.</p><code>e⁻ → ETS → H⁺ birikir</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="Elektronlar enerji bırakır"><text x="210" y="32" font-size="17" fill="#c084fc" text-anchor="middle" font-weight="700">ETS (elektron taşıma zinciri)</text><circle cx="90" cy="110" r="24" fill="#3b0764" stroke="#c084fc" stroke-width="3"/><circle r="6" fill="#38bdf8"><animateMotion dur="2.4s" begin="0.0s" repeatCount="indefinite" path="M90 88 L90 180"/><animate attributeName="opacity" values="1;1;0" dur="2.4s" begin="0.0s" repeatCount="indefinite"/></circle><circle cx="210" cy="110" r="24" fill="#3b0764" stroke="#c084fc" stroke-width="3"/><circle r="6" fill="#38bdf8"><animateMotion dur="2.4s" begin="0.8s" repeatCount="indefinite" path="M210 88 L210 180"/><animate attributeName="opacity" values="1;1;0" dur="2.4s" begin="0.8s" repeatCount="indefinite"/></circle><circle cx="330" cy="110" r="24" fill="#3b0764" stroke="#c084fc" stroke-width="3"/><circle r="6" fill="#38bdf8"><animateMotion dur="2.4s" begin="1.6s" repeatCount="indefinite" path="M330 88 L330 180"/><animate attributeName="opacity" values="1;1;0" dur="2.4s" begin="1.6s" repeatCount="indefinite"/></circle><path d="M20 110 L400 110" stroke="#fbbf24" stroke-opacity=".3" stroke-width="2" stroke-dasharray="4 6"/><circle r="7" fill="#fbbf24"><animateMotion dur="4s" begin="0s" repeatCount="indefinite" path="M20 110 L400 110"/></circle><circle r="7" fill="#fbbf24"><animateMotion dur="4s" begin="2s" repeatCount="indefinite" path="M20 110 L400 110"/></circle><rect x="20" y="185" width="380" height="45" rx="14" fill="#0c2a3d" stroke="#38bdf8" stroke-opacity=".5"/><text x="210" y="214" font-size="18" fill="#38bdf8" text-anchor="middle" font-weight="700">Lümen (depo): H⁺ birikir</text></svg></div></div><div class="st rv"><div class="tx"><div class="num">4</div><h3>NADPH oluşur</h3><p>Zincirin sonunda elektron ve H⁺, boş pil gibi olan NADP⁺'ya yüklenir. Dolu pil: NADPH.</p><code>NADP⁺ + H⁺ + e⁻ → NADPH</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="NADPH oluşur"><rect x="30" y="100" width="120" height="70" rx="14" fill="#0b1b14" stroke="#64748b" stroke-width="3"/><text x="90" y="143" font-size="22" fill="#cbd5e1" text-anchor="middle" font-weight="700">NADP⁺</text><text x="90" y="198" font-size="16" fill="#8fb5a0" text-anchor="middle" font-weight="500">boş pil</text><circle r="7" fill="#fbbf24"><animateMotion dur="2.4s" begin="0s" repeatCount="indefinite" path="M40 30 L85 95"/><animate attributeName="opacity" values="1;1;0" dur="2.4s" begin="0s" repeatCount="indefinite"/></circle><circle r="6" fill="#38bdf8"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M140 30 L105 95"/><animate attributeName="opacity" values="1;1;0" dur="2.4s" begin="1.2s" repeatCount="indefinite"/></circle><text x="40" y="25" font-size="17" fill="#fbbf24" text-anchor="start" font-weight="700">e⁻</text><text x="150" y="25" font-size="17" fill="#38bdf8" text-anchor="end" font-weight="700">H⁺</text><path d="M165 135 L255 135" stroke="#4ade80" stroke-width="4" class="flow"/><rect x="270" y="100" width="130" height="70" rx="14" fill="#1e1b4b" stroke="#a78bfa" stroke-width="3" class="pulse"/><text x="335" y="143" font-size="22" fill="#c4b5fd" text-anchor="middle" font-weight="700">NADPH</text><text x="335" y="198" font-size="16" fill="#8fb5a0" text-anchor="middle" font-weight="500">dolu pil</text></svg></div></div><div class="st rv"><div class="tx"><div class="num">5</div><h3>ATP oluşur</h3><p>Depodaki H⁺'lar ATP sentaz kapısından geri akar. Bu akış, su çarkı gibi ATP üretir.</p><code>ADP + Pᵢ → ATP</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="ATP oluşur"><text x="15" y="28" font-size="16" fill="#8fb5a0" text-anchor="start" font-weight="500">Stroma</text><text x="15" y="228" font-size="16" fill="#8fb5a0" text-anchor="start" font-weight="500">Lümen</text><rect x="150" y="105" width="120" height="40" rx="12" fill="#422006" stroke="#f59e0b" stroke-width="3"/><text x="210" y="131" font-size="17" fill="#fcd34d" text-anchor="middle" font-weight="700">ATP sentaz</text><circle cx="70" cy="175" r="6" fill="#38bdf8" class="glow" style="animation-delay:0s"/><circle cx="120" cy="205" r="6" fill="#38bdf8" class="glow" style="animation-delay:0.4s"/><circle cx="180" cy="190" r="6" fill="#38bdf8" class="glow" style="animation-delay:0.8s"/><circle cx="240" cy="210" r="6" fill="#38bdf8" class="glow" style="animation-delay:0.2s"/><circle cx="300" cy="180" r="6" fill="#38bdf8" class="glow" style="animation-delay:0.6s"/><circle cx="340" cy="205" r="6" fill="#38bdf8" class="glow" style="animation-delay:1s"/><circle r="6" fill="#38bdf8"><animateMotion dur="2.8s" begin="0s" repeatCount="indefinite" path="M200 200 L200 55"/><animate attributeName="opacity" values="1;1;0" dur="2.8s" begin="0s" repeatCount="indefinite"/></circle><circle r="6" fill="#38bdf8"><animateMotion dur="2.8s" begin="0.9s" repeatCount="indefinite" path="M180 200 L180 55"/><animate attributeName="opacity" values="1;1;0" dur="2.8s" begin="0.9s" repeatCount="indefinite"/></circle><circle r="6" fill="#38bdf8"><animateMotion dur="2.8s" begin="1.8s" repeatCount="indefinite" path="M225 200 L225 55"/><animate attributeName="opacity" values="1;1;0" dur="2.8s" begin="1.8s" repeatCount="indefinite"/></circle><text x="345" y="40" font-size="16" fill="#8fb5a0" text-anchor="middle" font-weight="700">ADP + Pᵢ</text><g class="glow"><rect x="305" y="55" width="80" height="40" rx="12" fill="#f59e0b"/><text x="345" y="83" font-size="20" fill="#1c1002" text-anchor="middle" font-weight="700">ATP</text></g></svg></div></div></div>
+</section>
+
+<section aria-label="Geçiş" style="padding:0 20px"><div class="card rv" style="max-width:700px;margin:auto;padding:16px">
+<svg viewBox="0 0 640 130" role="img" aria-label="ATP ve NADPH granumdan stromaya taşınır">
+<text x="20" y="32" fill="#bbf7d0" font-size="22" font-weight="700">Granum</text><text x="620" y="32" fill="#bbf7d0" font-size="22" font-weight="700" text-anchor="end">Stroma</text>
+<path d="M20 80 L620 80" stroke="#4ade80" stroke-width="3" class="flow" opacity=".6"/>
+<g><rect x="-36" y="-16" width="72" height="32" rx="10" fill="#312e81"/><text y="6" font-size="16" fill="#c4b5fd" text-anchor="middle" font-weight="700">NADPH</text><animateMotion dur="4s" repeatCount="indefinite" path="M60 80 L580 80"/></g>
+<g><rect x="-28" y="-16" width="56" height="32" rx="10" fill="#f59e0b"/><text y="6" font-size="16" fill="#1c1002" text-anchor="middle" font-weight="700">ATP</text><animateMotion dur="4s" begin="2s" repeatCount="indefinite" path="M60 80 L580 80"/></g>
+<text x="320" y="122" fill="#8fb5a0" font-size="16" text-anchor="middle">ATP ve NADPH stromaya taşınır</text></svg></div></section>
+
+<section id="calvin">
+<span class="tag rv">2 · Stroma</span>
+<h2 class="rv">Işıktan Bağımsız Evre</h2>
+<p class="s rv">Amaç: CO₂'yi ATP ve NADPH ile besine çevirmek. Işığı doğrudan kullanmaz.</p>
+<div class="big rv"><div><small>GİRDİ</small><b>CO₂</b><span>ATP · NADPH</span></div><div class="ar">→</div><div class="mid"><small>NEREDE?</small><b>Stroma</b><span>Calvin döngüsü</span></div><div class="ar">→</div><div><small>ÇIKTI</small><b>Besin (C₆H₁₂O₆)</b><span>ADP + Pᵢ · NADP⁺</span></div></div>
+<div class="steps"><div class="st rv"><div class="tx"><div class="num">1</div><h3>CO₂ alınır</h3><p>Havadaki CO₂, stromada 5 karbonlu bir şekere bağlanır.</p><code>CO₂ + 5C şeker → bağlı CO₂</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="CO₂ alınır"><rect x="15" y="95" width="100" height="50" rx="14" fill="#0b1b14" stroke="#94a3b8" stroke-width="3"/><text x="65" y="128" font-size="24" fill="#e2e8f0" text-anchor="middle" font-weight="700">CO₂</text><text x="65" y="172" font-size="15" fill="#8fb5a0" text-anchor="middle" font-weight="500">havadan gelir</text><path d="M118 120 L162 120" stroke="#94a3b8" stroke-width="3" class="flow"/><circle r="7" fill="#e2e8f0"><animateMotion dur="1.6s" begin="0s" repeatCount="indefinite" path="M118 120 L162 120"/><animate attributeName="opacity" values="1;1;0" dur="1.6s" begin="0s" repeatCount="indefinite"/></circle><circle r="7" fill="#e2e8f0"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" path="M118 120 L162 120"/><animate attributeName="opacity" values="1;1;0" dur="1.6s" begin="0.8s" repeatCount="indefinite"/></circle><rect x="165" y="85" width="110" height="70" rx="14" fill="#14532d" stroke="#4ade80" stroke-width="3"/><text x="220" y="126" font-size="19" fill="#bbf7d0" text-anchor="middle" font-weight="700">5C şeker</text><path d="M278 120 L307 120" stroke="#4ade80" stroke-width="3" class="flow"/><rect x="310" y="85" width="100" height="70" rx="14" fill="#0b1b14" stroke="#4ade80" stroke-width="3"/><text x="360" y="126" font-size="17" fill="#bbf7d0" text-anchor="middle" font-weight="700">Bağlı CO₂</text></svg></div></div><div class="st rv"><div class="tx"><div class="num">2</div><h3>Besine dönüşür</h3><p>Granumdan gelen ATP ve NADPH harcanır. Bağlı CO₂ besine (glikoz) dönüşür.</p><code>ATP + NADPH → C₆H₁₂O₆</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="Besine dönüşür"><rect x="15" y="40" width="90" height="42" rx="14" fill="#422006" stroke="#f59e0b" stroke-width="3"/><text x="60" y="67" font-size="20" fill="#fcd34d" text-anchor="middle" font-weight="700">ATP</text><rect x="15" y="150" width="110" height="42" rx="14" fill="#1e1b4b" stroke="#a78bfa" stroke-width="3"/><text x="70" y="177" font-size="20" fill="#c4b5fd" text-anchor="middle" font-weight="700">NADPH</text><circle r="7" fill="#f59e0b"><animateMotion dur="2.2s" begin="0s" repeatCount="indefinite" path="M105 61 L168 105"/><animate attributeName="opacity" values="1;1;0" dur="2.2s" begin="0s" repeatCount="indefinite"/></circle><circle r="7" fill="#a78bfa"><animateMotion dur="2.2s" begin="1s" repeatCount="indefinite" path="M125 171 L168 135"/><animate attributeName="opacity" values="1;1;0" dur="2.2s" begin="1s" repeatCount="indefinite"/></circle><rect x="170" y="80" width="110" height="80" rx="14" fill="#14532d" stroke="#4ade80" stroke-width="3"/><text x="225" y="115" font-size="19" fill="#bbf7d0" text-anchor="middle" font-weight="700">Şeker</text><text x="225" y="140" font-size="19" fill="#bbf7d0" text-anchor="middle" font-weight="700">üretimi</text><rect x="300" y="30" width="110" height="50" rx="14" fill="#7c2d12" stroke="#fb923c" stroke-width="3"/><text x="355" y="52" font-size="16" fill="#fed7aa" text-anchor="middle" font-weight="700">Besin</text><text x="355" y="71" font-size="15" fill="#fed7aa" text-anchor="middle" font-weight="700">C₆H₁₂O₆</text><rect x="300" y="150" width="110" height="62" rx="14" fill="#0b1b14" stroke="#64748b" stroke-width="3"/><text x="355" y="175" font-size="16" fill="#cbd5e1" text-anchor="middle" font-weight="700">ADP + Pᵢ</text><text x="355" y="196" font-size="16" fill="#cbd5e1" text-anchor="middle" font-weight="700">NADP⁺</text><circle r="7" fill="#fb923c"><animateMotion dur="1.8s" begin="0s" repeatCount="indefinite" path="M280 105 L300 62"/><animate attributeName="opacity" values="1;1;0" dur="1.8s" begin="0s" repeatCount="indefinite"/></circle><circle r="7" fill="#cbd5e1"><animateMotion dur="1.8s" begin="0.9s" repeatCount="indefinite" path="M280 135 L300 172"/><animate attributeName="opacity" values="1;1;0" dur="1.8s" begin="0.9s" repeatCount="indefinite"/></circle><text x="355" y="228" font-size="14" fill="#8fb5a0" text-anchor="middle" font-weight="500">granuma döner</text></svg></div></div><div class="st rv"><div class="tx"><div class="num">3</div><h3>Döngü yenilenir</h3><p>Başlangıçtaki şeker yeniden oluşur. Böylece CO₂ almaya devam edilir.</p><code>ADP + Pᵢ ve NADP⁺ → granuma</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="Döngü yenilenir"><circle cx="210" cy="125" r="75" fill="none" stroke="#4ade80" stroke-width="4" class="flow"/><path id="rg" d="M210 50 A75 75 0 1 1 209.9 50" fill="none"/><circle r="9" fill="#4ade80"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#rg"/></animateMotion></circle><text x="210" y="120" font-size="21" fill="#bbf7d0" text-anchor="middle" font-weight="700">5C şeker</text><text x="210" y="146" font-size="15" fill="#8fb5a0" text-anchor="middle" font-weight="500">yeniden oluşur</text><text x="210" y="30" font-size="17" fill="#4ade80" text-anchor="middle" font-weight="700">Döngü tekrar başlar</text></svg></div></div></div>
+</section>
+
+<section id="baglanti">
+<span class="tag rv">Bağlantı</span>
+<h2 class="rv">İki Evre Birbirine Bağlıdır</h2>
+<p class="s rv">Fotosentez, iki evrenin birlikte çalışmasıdır. Biri diğerinin ürününü kullanır.</p>
+<div class="card rv" style="max-width:760px;margin:auto"><svg viewBox="0 0 700 290" role="img" aria-label="İki evrenin bağlantısı">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4ade80"/></marker></defs>
+<text x="135" y="28" fill="#fbbf24" font-size="18" font-weight="700" text-anchor="middle">Işık + H₂O</text><path d="M135 38 L135 76" stroke="#fbbf24" stroke-width="3" class="flow" marker-end="url(#ah)"/>
+<text x="565" y="28" fill="#e2e8f0" font-size="18" font-weight="700" text-anchor="middle">CO₂</text><path d="M565 38 L565 76" stroke="#94a3b8" stroke-width="3" class="flow" marker-end="url(#ah)"/>
+<rect x="20" y="80" width="230" height="140" rx="20" fill="#14532d" stroke="#4ade80" stroke-width="3"/><text x="135" y="140" fill="#e8f5ee" font-size="20" font-weight="700" text-anchor="middle">Işığa bağımlı evre</text><text x="135" y="168" fill="#bbf7d0" font-size="16" text-anchor="middle">Granum</text>
+<rect x="450" y="80" width="230" height="140" rx="20" fill="#14532d" stroke="#4ade80" stroke-width="3"/><text x="565" y="140" fill="#e8f5ee" font-size="20" font-weight="700" text-anchor="middle">Işıktan bağımsız evre</text><text x="565" y="168" fill="#bbf7d0" font-size="16" text-anchor="middle">Stroma</text>
+<path d="M255 120 L445 120" stroke="#4ade80" stroke-width="3" class="flow" marker-end="url(#ah)"/>
+<text x="350" y="100" fill="#fcd34d" font-size="16" font-weight="700" text-anchor="middle">ATP + NADPH</text>
+<g><rect x="-35" y="-14" width="70" height="28" rx="9" fill="#f59e0b"/><text y="5" font-size="14" fill="#1c1002" text-anchor="middle" font-weight="700">ATP</text><animateMotion dur="3s" begin="0s" repeatCount="indefinite" path="M310 120 L400 120"/></g><g><rect x="-42" y="-14" width="84" height="28" rx="9" fill="#312e81"/><text y="5" font-size="14" fill="#c4b5fd" text-anchor="middle" font-weight="700">NADPH</text><animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" path="M310 120 L400 120"/></g>
+<path d="M445 190 L255 190" stroke="#94a3b8" stroke-width="3" class="flow" marker-end="url(#ah)"/><circle r="6" fill="#94a3b8"><animateMotion dur="3s" begin="0s" repeatCount="indefinite" path="M445 190 L255 190"/></circle><circle r="6" fill="#94a3b8"><animateMotion dur="3s" begin="1s" repeatCount="indefinite" path="M445 190 L255 190"/></circle><circle r="6" fill="#94a3b8"><animateMotion dur="3s" begin="2s" repeatCount="indefinite" path="M445 190 L255 190"/></circle>
+<text x="350" y="214" fill="#cbd5e1" font-size="16" font-weight="700" text-anchor="middle">ADP + Pᵢ + NADP⁺</text>
+<path d="M135 222 L135 258" stroke="#fb7185" stroke-width="3" class="flow" marker-end="url(#ah)"/><text x="135" y="280" fill="#fb7185" font-size="18" font-weight="700" text-anchor="middle">O₂</text>
+<path d="M565 222 L565 258" stroke="#fb923c" stroke-width="3" class="flow" marker-end="url(#ah)"/><text x="565" y="280" fill="#fb923c" font-size="18" font-weight="700" text-anchor="middle">Besin</text>
+</svg></div>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:16px">
+<div class="cmp rv"><h3>Işık evresi → Calvin</h3><p style="color:var(--mu);margin:8px 0 0">ATP ve NADPH üretilir. Calvin döngüsü bunları kullanır.</p></div>
+<div class="cmp rv"><h3>Calvin → ışık evresi</h3><p style="color:var(--mu);margin:8px 0 0">ADP + Pᵢ ve NADP⁺ granuma döner. Işık evresi bunlardan yeniden ATP ve NADPH yapar.</p></div>
+<div class="cmp rv"><h3>"Bağımsız" ne demek?</h3><p style="color:var(--mu);margin:8px 0 0">Calvin ışığı doğrudan kullanmaz. Ancak ışık kesilirse ATP ve NADPH biter, Calvin de durur.</p></div>
+</div>
+</section>
+<section id="ozet">
+<span class="tag rv">Özet</span>
+<h2 class="rv">Karşılaştırma</h2>
+<div class="grid" style="margin-top:24px">
+<div class="cmp rv"><h3>Işığa Bağımlı</h3><small>Granum · ETS</small>
+<div class="row"><b>Girdi</b><span class="p">Işık</span><span class="p">H₂O</span><span class="p">NADP⁺</span><span class="p">ADP + Pᵢ</span></div>
+<div class="row"><b>Ürün</b><span class="p">O₂</span><span class="p">NADPH</span><span class="p">ATP</span></div></div>
+<div class="cmp rv"><h3>Işıktan Bağımsız</h3><small>Stroma · Calvin</small>
+<div class="row"><b>Girdi</b><span class="p">CO₂</span><span class="p">NADPH</span><span class="p">ATP</span></div>
+<div class="row"><b>Ürün</b><span class="p">C₆H₁₂O₆</span><span class="p">NADP⁺</span><span class="p">ADP + Pᵢ</span></div></div>
+</div>
+</section>
+<footer>Fotosentez · Kloroplast</footer>
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+</script>
+</body>
+</html>
