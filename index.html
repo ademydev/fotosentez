@@ -8,9 +8,9 @@
 :root{color-scheme:dark;--bg:#07140f;--card:#0e2219;--line:#1d3b2c;--tx:#e8f5ee;--mu:#8fb5a0;--g:#4ade80;--y:#fbbf24;--b:#38bdf8;--r:#fb7185;--o:#f59e0b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--tx);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;overflow-x:hidden}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;gap:6px;justify-content:center;padding:10px;background:rgba(7,20,15,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav a{color:var(--mu);text-decoration:none;font-size:13px;padding:6px 14px;border-radius:99px;transition:.3s}
-nav a:hover{background:var(--card);color:var(--tx)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:10px;background:rgba(7,20,15,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav a{color:var(--mu);text-decoration:none;font-size:13px;padding:6px 14px;border-radius:99px;transition:.3s;white-space:nowrap}
+nav a:hover,nav a:focus-visible{background:var(--card);color:var(--tx)}
 section{max-width:960px;margin:0 auto;padding:72px 20px}
 h1{font-size:clamp(34px,7vw,64px);margin:0;letter-spacing:-1.5px;line-height:1.05}
 h2{font-size:clamp(26px,4.5vw,40px);margin:0 0 8px;letter-spacing:-1px}
@@ -60,12 +60,21 @@ footer{text-align:center;color:var(--mu);font-size:12px;padding:30px}
 .big{display:flex;gap:10px;align-items:stretch;justify-content:center;flex-wrap:wrap;margin-bottom:28px}.big>div:not(.ar){flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:3px;text-align:center}.big .mid{border-color:var(--g)}.big small{color:var(--g);letter-spacing:2px;font-size:11px}.big b{font-size:18px}.big span{color:var(--mu);font-size:13px}.big .ar{align-self:center;font-size:28px;color:var(--g);animation:nudge 1.4s ease-in-out infinite}@keyframes nudge{50%{transform:translateX(6px)}}
 .steps{display:grid;gap:28px}.st{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;align-items:center}.st:nth-child(even) .tx{order:2}
 .st .num{width:44px;height:44px;border-radius:50%;background:var(--g);color:#052e16;font-weight:800;display:grid;place-items:center;font-size:22px;margin-bottom:10px}.st h3{margin:0 0 6px;font-size:22px}.st p{margin:0 0 12px;color:var(--mu);font-size:16px}.st code{display:inline-block;background:#0b1b14;border:1px solid var(--line);padding:6px 12px;border-radius:10px;color:var(--y);font-size:15px}
+.note,.equation,.glossary,.factor,.quizbox,.sources{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.note{border-left:4px solid var(--y);color:var(--mu)}.note strong{color:var(--tx)}
+.equation{text-align:center}.equation strong{display:block;font-size:clamp(19px,4vw,30px);color:var(--g);margin:8px 0}.equation p{margin:0;color:var(--mu)}
+.anatomy{margin:20px 0}.anatomy svg{max-width:700px;margin:auto}.glossary{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:20px}.glossary div{padding:12px;border:1px solid var(--line);border-radius:12px}.glossary dt{font-weight:700;color:var(--g)}.glossary dd{margin:4px 0 0;color:var(--mu)}
+.factor{display:grid;gap:16px}.factor label{display:grid;grid-template-columns:minmax(120px,1fr) 2fr auto;gap:12px;align-items:center}.factor input{width:100%;accent-color:var(--g)}.factor output{min-width:56px;color:var(--y);text-align:right}.ratebar{height:18px;border-radius:99px;background:#07140f;border:1px solid var(--line);overflow:hidden}.ratebar span{display:block;width:0;height:100%;background:linear-gradient(90deg,#fbbf24,#4ade80);transition:width .25s}.factor small,.sources p{color:var(--mu)}
+.quizbox fieldset{margin:0 0 14px;padding:14px;border:1px solid var(--line);border-radius:12px}.quizbox legend{font-weight:700}.quizbox label{display:block;padding:4px 0;color:var(--mu);cursor:pointer}.quizbox input{accent-color:var(--g);margin-right:8px}.quizbox button{background:var(--g);color:#052e16;border:0;border-radius:10px;padding:10px 16px;font:inherit;font-weight:700;cursor:pointer}.quizbox button:focus-visible{outline:2px solid var(--tx);outline-offset:3px}.quiz-feedback{min-height:1.5em;color:var(--y)}
+.sources a{color:var(--g)}.sources li{margin:8px 0}
+button,input{font:inherit}
 @media(max-width:700px){.st{grid-template-columns:1fr}.st:nth-child(even) .tx{order:0}.big .ar{display:none}}
+@media(max-width:640px){nav{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto}nav a{padding:6px 9px;font-size:12px}.factor label{grid-template-columns:1fr auto}.factor input{grid-column:1/-1;grid-row:2}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
-<nav><a href="#top">Kloroplast</a><a href="#isik">Işığa Bağımlı</a><a href="#calvin">Bağımsız Evre</a><a href="#baglanti">Bağlantı</a><a href="#ozet">Özet</a></nav>
+<nav aria-label="Ana menü"><a href="#top">Kloroplast</a><a href="#denklem">Genel denklem</a><a href="#yapi">Yapısı</a><a href="#isik">Işığa Bağımlı</a><a href="#calvin">Bağımsız Evre</a><a href="#baglanti">Bağlantı</a><a href="#etkenler">Etkileyenler</a><a href="#ozet">Özet</a><a href="#quiz">Mini quiz</a><a href="#kaynaklar">Kaynakça</a></nav>
 
 <section class="hero" id="top">
 <span class="tag">Biyoloji · Fotosentez</span>
@@ -95,6 +104,41 @@ footer{text-align:center;color:var(--mu);font-size:12px;padding:30px}
 </svg></div>
 </section>
 
+<section id="denklem">
+<span class="tag rv">Büyük resim</span>
+<h2 class="rv">Fotosentezin Genel Denklemi</h2>
+<p class="s rv">Bitki, ışık enerjisini kullanarak karbondioksit ve sudan karbonhidrat üretir.</p>
+<div class="equation rv"><p>6 CO₂ + 6 H₂O + ışık enerjisi</p><strong>→ C₆H₁₂O₆ + 6 O₂</strong><p>Karbondioksit + su → glikoz + oksijen</p></div>
+<p class="note rv" style="margin-top:16px"><strong>Önemli:</strong> Denklem fotosentezin genel bilançosunu gösterir. Açığa çıkan O₂, CO₂'den değil, ışığa bağımlı evrede parçalanan sudan gelir. Calvin döngüsünde ilk oluşan karbonhidrat öncülü G3P'dir; glikoz daha sonraki sentez basamaklarında oluşur.</p>
+</section>
+
+<section id="yapi">
+<span class="tag rv">Kloroplastı tanıyalım</span>
+<h2 class="rv">Kloroplastın Yapısı</h2>
+<p class="s rv">Fotosentezin iki evresi, kloroplastın farklı bölümlerinde gerçekleşir.</p>
+<div class="card anatomy rv">
+<svg viewBox="0 0 700 320" role="img" aria-labelledby="anatomi-baslik anatomi-aciklama">
+<title id="anatomi-baslik">Kloroplastın temel bölümleri</title><desc id="anatomi-aciklama">Çift zarla çevrili kloroplastın içinde stroma ve tilakoit disk yığınları olan granum gösterilir.</desc>
+<ellipse cx="340" cy="160" rx="290" ry="125" fill="#0b1b14" stroke="#4ade80" stroke-width="5"/>
+<ellipse cx="340" cy="160" rx="277" ry="112" fill="#0e2219" stroke="#86efac" stroke-width="2"/>
+<g fill="#16a34a" stroke="#bbf7d0" stroke-width="2">
+<rect x="205" y="105" width="100" height="15" rx="7"/><rect x="205" y="125" width="100" height="15" rx="7"/><rect x="205" y="145" width="100" height="15" rx="7"/><rect x="205" y="165" width="100" height="15" rx="7"/><rect x="205" y="185" width="100" height="15" rx="7"/>
+<rect x="325" y="120" width="100" height="15" rx="7"/><rect x="325" y="140" width="100" height="15" rx="7"/><rect x="325" y="160" width="100" height="15" rx="7"/><rect x="325" y="180" width="100" height="15" rx="7"/>
+</g>
+<text x="258" y="225" fill="#bbf7d0" font-size="17" font-weight="700" text-anchor="middle">Granum</text>
+<text x="490" y="167" fill="#86efac" font-size="19" font-weight="700" text-anchor="middle">Stroma</text>
+<path d="M255 100 L170 56 L68 56" fill="none" stroke="#fbbf24" stroke-width="2"/><text x="65" y="48" fill="#fbbf24" font-size="15">Tilakoitler</text>
+<path d="M70 213 L138 270 L235 270" fill="none" stroke="#38bdf8" stroke-width="2"/><text x="240" y="276" fill="#38bdf8" font-size="15">Çift zar</text>
+</svg>
+</div>
+<dl class="glossary rv">
+<div><dt>Tilakoit</dt><dd>Klorofilin bulunduğu zar keseciği; ışığa bağımlı tepkimeler burada yürür.</dd></div>
+<div><dt>Granum</dt><dd>Birden fazla tilakoitin üst üste dizilmesiyle oluşan yığın.</dd></div>
+<div><dt>Stroma</dt><dd>Tilakoitlerin çevresindeki sıvı bölüm; Calvin döngüsü burada gerçekleşir.</dd></div>
+<div><dt>Çift zar</dt><dd>Kloroplastı çevreleyen dış ve iç zar; organelin sınırını oluşturur.</dd></div>
+</dl>
+</section>
+
 <section id="isik">
 <span class="tag rv">1 · Granum</span>
 <h2 class="rv">Işığa Bağımlı Evre</h2>
@@ -114,9 +158,10 @@ footer{text-align:center;color:var(--mu);font-size:12px;padding:30px}
 <section id="calvin">
 <span class="tag rv">2 · Stroma</span>
 <h2 class="rv">Işıktan Bağımsız Evre</h2>
-<p class="s rv">Amaç: CO₂'yi ATP ve NADPH ile besine çevirmek. Işığı doğrudan kullanmaz.</p>
-<div class="big rv"><div><small>GİRDİ</small><b>CO₂</b><span>ATP · NADPH</span></div><div class="ar">→</div><div class="mid"><small>NEREDE?</small><b>Stroma</b><span>Calvin döngüsü</span></div><div class="ar">→</div><div><small>ÇIKTI</small><b>Besin (C₆H₁₂O₆)</b><span>ADP + Pᵢ · NADP⁺</span></div></div>
-<div class="steps"><div class="st rv"><div class="tx"><div class="num">1</div><h3>CO₂ alınır</h3><p>Havadaki CO₂, stromada 5 karbonlu bir şekere bağlanır.</p><code>CO₂ + 5C şeker → bağlı CO₂</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="CO₂ alınır"><rect x="15" y="95" width="100" height="50" rx="14" fill="#0b1b14" stroke="#94a3b8" stroke-width="3"/><text x="65" y="128" font-size="24" fill="#e2e8f0" text-anchor="middle" font-weight="700">CO₂</text><text x="65" y="172" font-size="15" fill="#8fb5a0" text-anchor="middle" font-weight="500">havadan gelir</text><path d="M118 120 L162 120" stroke="#94a3b8" stroke-width="3" class="flow"/><circle r="7" fill="#e2e8f0"><animateMotion dur="1.6s" begin="0s" repeatCount="indefinite" path="M118 120 L162 120"/><animate attributeName="opacity" values="1;1;0" dur="1.6s" begin="0s" repeatCount="indefinite"/></circle><circle r="7" fill="#e2e8f0"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" path="M118 120 L162 120"/><animate attributeName="opacity" values="1;1;0" dur="1.6s" begin="0.8s" repeatCount="indefinite"/></circle><rect x="165" y="85" width="110" height="70" rx="14" fill="#14532d" stroke="#4ade80" stroke-width="3"/><text x="220" y="126" font-size="19" fill="#bbf7d0" text-anchor="middle" font-weight="700">5C şeker</text><path d="M278 120 L307 120" stroke="#4ade80" stroke-width="3" class="flow"/><rect x="310" y="85" width="100" height="70" rx="14" fill="#0b1b14" stroke="#4ade80" stroke-width="3"/><text x="360" y="126" font-size="17" fill="#bbf7d0" text-anchor="middle" font-weight="700">Bağlı CO₂</text></svg></div></div><div class="st rv"><div class="tx"><div class="num">2</div><h3>Besine dönüşür</h3><p>Granumdan gelen ATP ve NADPH harcanır. Bağlı CO₂ besine (glikoz) dönüşür.</p><code>ATP + NADPH → C₆H₁₂O₆</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="Besine dönüşür"><rect x="15" y="40" width="90" height="42" rx="14" fill="#422006" stroke="#f59e0b" stroke-width="3"/><text x="60" y="67" font-size="20" fill="#fcd34d" text-anchor="middle" font-weight="700">ATP</text><rect x="15" y="150" width="110" height="42" rx="14" fill="#1e1b4b" stroke="#a78bfa" stroke-width="3"/><text x="70" y="177" font-size="20" fill="#c4b5fd" text-anchor="middle" font-weight="700">NADPH</text><circle r="7" fill="#f59e0b"><animateMotion dur="2.2s" begin="0s" repeatCount="indefinite" path="M105 61 L168 105"/><animate attributeName="opacity" values="1;1;0" dur="2.2s" begin="0s" repeatCount="indefinite"/></circle><circle r="7" fill="#a78bfa"><animateMotion dur="2.2s" begin="1s" repeatCount="indefinite" path="M125 171 L168 135"/><animate attributeName="opacity" values="1;1;0" dur="2.2s" begin="1s" repeatCount="indefinite"/></circle><rect x="170" y="80" width="110" height="80" rx="14" fill="#14532d" stroke="#4ade80" stroke-width="3"/><text x="225" y="115" font-size="19" fill="#bbf7d0" text-anchor="middle" font-weight="700">Şeker</text><text x="225" y="140" font-size="19" fill="#bbf7d0" text-anchor="middle" font-weight="700">üretimi</text><rect x="300" y="30" width="110" height="50" rx="14" fill="#7c2d12" stroke="#fb923c" stroke-width="3"/><text x="355" y="52" font-size="16" fill="#fed7aa" text-anchor="middle" font-weight="700">Besin</text><text x="355" y="71" font-size="15" fill="#fed7aa" text-anchor="middle" font-weight="700">C₆H₁₂O₆</text><rect x="300" y="150" width="110" height="62" rx="14" fill="#0b1b14" stroke="#64748b" stroke-width="3"/><text x="355" y="175" font-size="16" fill="#cbd5e1" text-anchor="middle" font-weight="700">ADP + Pᵢ</text><text x="355" y="196" font-size="16" fill="#cbd5e1" text-anchor="middle" font-weight="700">NADP⁺</text><circle r="7" fill="#fb923c"><animateMotion dur="1.8s" begin="0s" repeatCount="indefinite" path="M280 105 L300 62"/><animate attributeName="opacity" values="1;1;0" dur="1.8s" begin="0s" repeatCount="indefinite"/></circle><circle r="7" fill="#cbd5e1"><animateMotion dur="1.8s" begin="0.9s" repeatCount="indefinite" path="M280 135 L300 172"/><animate attributeName="opacity" values="1;1;0" dur="1.8s" begin="0.9s" repeatCount="indefinite"/></circle><text x="355" y="228" font-size="14" fill="#8fb5a0" text-anchor="middle" font-weight="500">granuma döner</text></svg></div></div><div class="st rv"><div class="tx"><div class="num">3</div><h3>Döngü yenilenir</h3><p>Başlangıçtaki şeker yeniden oluşur. Böylece CO₂ almaya devam edilir.</p><code>ADP + Pᵢ ve NADP⁺ → granuma</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="Döngü yenilenir"><circle cx="210" cy="125" r="75" fill="none" stroke="#4ade80" stroke-width="4" class="flow"/><path id="rg" d="M210 50 A75 75 0 1 1 209.9 50" fill="none"/><circle r="9" fill="#4ade80"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#rg"/></animateMotion></circle><text x="210" y="120" font-size="21" fill="#bbf7d0" text-anchor="middle" font-weight="700">5C şeker</text><text x="210" y="146" font-size="15" fill="#8fb5a0" text-anchor="middle" font-weight="500">yeniden oluşur</text><text x="210" y="30" font-size="17" fill="#4ade80" text-anchor="middle" font-weight="700">Döngü tekrar başlar</text></svg></div></div></div>
+<p class="s rv">Amaç: CO₂'yi ATP ve NADPH kullanarak karbonhidrat öncülü G3P'ye dönüştürmek. Işığı doğrudan kullanmaz; çalışması ışık evresinin ürünlerine bağlıdır.</p>
+<p class="note rv" style="margin-bottom:20px"><strong>Terim notu:</strong> “Işıktan bağımsız” demek, bu evrenin geceleri mutlaka sürdüğü anlamına gelmez. Hücre ATP ve NADPH'yi çoğunlukla ışık evresinde ürettiği için iki evre birbirine bağlıdır.</p>
+<div class="big rv"><div><small>GİRDİ</small><b>CO₂</b><span>ATP · NADPH</span></div><div class="ar">→</div><div class="mid"><small>NEREDE?</small><b>Stroma</b><span>Calvin döngüsü</span></div><div class="ar">→</div><div><small>İLK NET ÜRÜN</small><b>G3P (3C)</b><span>ADP + Pᵢ · NADP⁺</span></div></div>
+<div class="steps"><div class="st rv"><div class="tx"><div class="num">1</div><h3>Karbon bağlanır</h3><p>Rubisco enzimi CO₂'yi 5 karbonlu RuBP'ye bağlar. Kararsız 6 karbonlu ara ürün iki 3 karbonlu 3-PGA'ya ayrılır.</p><code>CO₂ + RuBP (5C) → 2 × 3-PGA (3C)</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="Karbon bağlanır"><rect x="15" y="95" width="100" height="50" rx="14" fill="#0b1b14" stroke="#94a3b8" stroke-width="3"/><text x="65" y="128" font-size="24" fill="#e2e8f0" text-anchor="middle" font-weight="700">CO₂</text><text x="65" y="172" font-size="15" fill="#8fb5a0" text-anchor="middle" font-weight="500">havadan gelir</text><path d="M118 120 L162 120" stroke="#94a3b8" stroke-width="3" class="flow"/><circle r="7" fill="#e2e8f0"><animateMotion dur="1.6s" begin="0s" repeatCount="indefinite" path="M118 120 L162 120"/><animate attributeName="opacity" values="1;1;0" dur="1.6s" begin="0s" repeatCount="indefinite"/></circle><circle r="7" fill="#e2e8f0"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" path="M118 120 L162 120"/><animate attributeName="opacity" values="1;1;0" dur="1.6s" begin="0.8s" repeatCount="indefinite"/></circle><rect x="165" y="85" width="110" height="70" rx="14" fill="#14532d" stroke="#4ade80" stroke-width="3"/><text x="220" y="126" font-size="19" fill="#bbf7d0" text-anchor="middle" font-weight="700">RuBP (5C)</text><path d="M278 120 L307 120" stroke="#4ade80" stroke-width="3" class="flow"/><rect x="310" y="85" width="100" height="70" rx="14" fill="#0b1b14" stroke="#4ade80" stroke-width="3"/><text x="360" y="126" font-size="16" fill="#bbf7d0" text-anchor="middle" font-weight="700">2 × 3-PGA</text></svg></div></div><div class="st rv"><div class="tx"><div class="num">2</div><h3>G3P üretilir</h3><p>ATP ve NADPH yardımıyla 3-PGA indirgenerek G3P oluşur. G3P'nin bir bölümü daha sonra glikoz ve başka organik maddelerin yapımında kullanılabilir.</p><code>3-PGA + ATP + NADPH → G3P</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="G3P oluşumu"><rect x="15" y="40" width="90" height="42" rx="14" fill="#422006" stroke="#f59e0b" stroke-width="3"/><text x="60" y="67" font-size="20" fill="#fcd34d" text-anchor="middle" font-weight="700">ATP</text><rect x="15" y="150" width="110" height="42" rx="14" fill="#1e1b4b" stroke="#a78bfa" stroke-width="3"/><text x="70" y="177" font-size="20" fill="#c4b5fd" text-anchor="middle" font-weight="700">NADPH</text><circle r="7" fill="#f59e0b"><animateMotion dur="2.2s" begin="0s" repeatCount="indefinite" path="M105 61 L168 105"/><animate attributeName="opacity" values="1;1;0" dur="2.2s" begin="0s" repeatCount="indefinite"/></circle><circle r="7" fill="#a78bfa"><animateMotion dur="2.2s" begin="1s" repeatCount="indefinite" path="M125 171 L168 135"/><animate attributeName="opacity" values="1;1;0" dur="2.2s" begin="1s" repeatCount="indefinite"/></circle><rect x="170" y="80" width="110" height="80" rx="14" fill="#14532d" stroke="#4ade80" stroke-width="3"/><text x="225" y="115" font-size="19" fill="#bbf7d0" text-anchor="middle" font-weight="700">G3P</text><text x="225" y="140" font-size="16" fill="#bbf7d0" text-anchor="middle" font-weight="700">oluşumu</text><rect x="300" y="30" width="110" height="50" rx="14" fill="#7c2d12" stroke="#fb923c" stroke-width="3"/><text x="355" y="52" font-size="16" fill="#fed7aa" text-anchor="middle" font-weight="700">G3P</text><text x="355" y="71" font-size="15" fill="#fed7aa" text-anchor="middle" font-weight="700">3 karbon</text><rect x="300" y="150" width="110" height="62" rx="14" fill="#0b1b14" stroke="#64748b" stroke-width="3"/><text x="355" y="175" font-size="16" fill="#cbd5e1" text-anchor="middle" font-weight="700">ADP + Pᵢ</text><text x="355" y="196" font-size="16" fill="#cbd5e1" text-anchor="middle" font-weight="700">NADP⁺</text><circle r="7" fill="#fb923c"><animateMotion dur="1.8s" begin="0s" repeatCount="indefinite" path="M280 105 L300 62"/><animate attributeName="opacity" values="1;1;0" dur="1.8s" begin="0s" repeatCount="indefinite"/></circle><circle r="7" fill="#cbd5e1"><animateMotion dur="1.8s" begin="0.9s" repeatCount="indefinite" path="M280 135 L300 172"/><animate attributeName="opacity" values="1;1;0" dur="1.8s" begin="0.9s" repeatCount="indefinite"/></circle><text x="355" y="228" font-size="14" fill="#8fb5a0" text-anchor="middle" font-weight="500">granuma döner</text></svg></div></div><div class="st rv"><div class="tx"><div class="num">3</div><h3>RuBP yenilenir</h3><p>G3P'nin büyük bölümü ATP kullanılarak başlangıçtaki RuBP'yi yeniler; kalan bölümü döngüden çıkarak karbonhidrat sentezinde kullanılabilir.</p><code>G3P'nin çoğu + ATP → RuBP</code></div><div class="card"><svg viewBox="0 0 420 240" role="img" aria-label="RuBP yenilenir"><circle cx="210" cy="125" r="75" fill="none" stroke="#4ade80" stroke-width="4" class="flow"/><path id="rg" d="M210 50 A75 75 0 1 1 209.9 50" fill="none"/><circle r="9" fill="#4ade80"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#rg"/></animateMotion></circle><text x="210" y="120" font-size="21" fill="#bbf7d0" text-anchor="middle" font-weight="700">RuBP</text><text x="210" y="146" font-size="15" fill="#8fb5a0" text-anchor="middle" font-weight="500">yeniden oluşur</text><text x="210" y="30" font-size="17" fill="#4ade80" text-anchor="middle" font-weight="700">Döngü tekrar başlar</text></svg></div></div></div>
 </section>
 
 <section id="baglanti">
@@ -143,6 +188,20 @@ footer{text-align:center;color:var(--mu);font-size:12px;padding:30px}
 <div class="cmp rv"><h3>"Bağımsız" ne demek?</h3><p style="color:var(--mu);margin:8px 0 0">Calvin ışığı doğrudan kullanmaz. Ancak ışık kesilirse ATP ve NADPH biter, Calvin de durur.</p></div>
 </div>
 </section>
+
+<section id="etkenler">
+<span class="tag rv">Uygulama</span>
+<h2 class="rv">Fotosentez Hızını Neler Etkiler?</h2>
+<p class="s rv">Işık, karbondioksit ve sıcaklık fotosentez hızını sınırlayabilir. Kaydırıcıları değiştirerek basitleştirilmiş modeli inceleyin.</p>
+<div class="factor rv">
+<label for="isik-miktari"><span>Işık şiddeti</span><input id="isik-miktari" type="range" min="0" max="100" value="70"><output id="isik-degeri" for="isik-miktari">70%</output></label>
+<label for="co2-miktari"><span>CO₂ düzeyi</span><input id="co2-miktari" type="range" min="0" max="100" value="65"><output id="co2-degeri" for="co2-miktari">65%</output></label>
+<label for="sicaklik"><span>Sıcaklık</span><input id="sicaklik" type="range" min="0" max="45" value="25"><output id="sicaklik-degeri" for="sicaklik">25 °C</output></label>
+<div><div class="ratebar" role="meter" aria-label="Tahmini göreli fotosentez hızı" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="hiz-cubugu"></span></div><p id="hiz-metni" aria-live="polite">Tahmini göreli hız: %0</p></div>
+<small>Bu, hangi etkenin sınırlayıcı olabileceğini gösteren öğretici bir modeldir; gerçek optimum sıcaklık ve tepkiler bitki türüne ve koşullara göre değişir.</small>
+</div>
+</section>
+
 <section id="ozet">
 <span class="tag rv">Özet</span>
 <h2 class="rv">Karşılaştırma</h2>
@@ -152,13 +211,83 @@ footer{text-align:center;color:var(--mu);font-size:12px;padding:30px}
 <div class="row"><b>Ürün</b><span class="p">O₂</span><span class="p">NADPH</span><span class="p">ATP</span></div></div>
 <div class="cmp rv"><h3>Işıktan Bağımsız</h3><small>Stroma · Calvin</small>
 <div class="row"><b>Girdi</b><span class="p">CO₂</span><span class="p">NADPH</span><span class="p">ATP</span></div>
-<div class="row"><b>Ürün</b><span class="p">C₆H₁₂O₆</span><span class="p">NADP⁺</span><span class="p">ADP + Pᵢ</span></div></div>
+<div class="row"><b>Ürün</b><span class="p">G3P</span><span class="p">NADP⁺</span><span class="p">ADP + Pᵢ</span></div></div>
 </div>
+</section>
+<section id="quiz">
+<span class="tag rv">Kendini dene</span>
+<h2 class="rv">Mini Quiz</h2>
+<p class="s rv">Soruları yanıtlayıp kontrol edin; her sorunun geri bildirimi aşağıda görünür.</p>
+<form class="quizbox rv" id="quiz-form">
+<fieldset data-answer="b"><legend>1. Işığa bağımlı tepkimeler kloroplastın neresinde gerçekleşir?</legend><label><input type="radio" name="q1" value="a"> Stromada</label><label><input type="radio" name="q1" value="b"> Tilakoit zarlarında</label><label><input type="radio" name="q1" value="c"> Dış zarda</label><p class="quiz-feedback" aria-live="polite"></p></fieldset>
+<fieldset data-answer="a"><legend>2. Işığa bağımlı evrede parçalanan madde hangisidir?</legend><label><input type="radio" name="q2" value="a"> Su (H₂O)</label><label><input type="radio" name="q2" value="b"> Glikoz</label><label><input type="radio" name="q2" value="c"> Karbondioksit (CO₂)</label><p class="quiz-feedback" aria-live="polite"></p></fieldset>
+<fieldset data-answer="c"><legend>3. Calvin döngüsünün doğrudan net karbon ürünü hangisidir?</legend><label><input type="radio" name="q3" value="a"> Oksijen (O₂)</label><label><input type="radio" name="q3" value="b"> ATP</label><label><input type="radio" name="q3" value="c"> G3P</label><p class="quiz-feedback" aria-live="polite"></p></fieldset>
+<fieldset data-answer="b"><legend>4. Fotosentezde açığa çıkan O₂'nin kaynağı nedir?</legend><label><input type="radio" name="q4" value="a"> Karbondioksit</label><label><input type="radio" name="q4" value="b"> Su</label><label><input type="radio" name="q4" value="c"> Glikoz</label><p class="quiz-feedback" aria-live="polite"></p></fieldset>
+<fieldset data-answer="a"><legend>5. “Işıktan bağımsız” evre için hangisi doğrudur?</legend><label><input type="radio" name="q5" value="a"> Işığı doğrudan kullanmaz ama ışık evresinin ürünlerine bağlıdır.</label><label><input type="radio" name="q5" value="b"> Sadece gece gerçekleşir.</label><label><input type="radio" name="q5" value="c"> Kloroplast dışında gerçekleşir.</label><p class="quiz-feedback" aria-live="polite"></p></fieldset>
+<button type="submit">Yanıtları kontrol et</button>
+<p id="quiz-sonuc" aria-live="polite"></p>
+</form>
+</section>
+<section id="kaynaklar">
+<span class="tag rv">Daha fazla öğren</span>
+<h2 class="rv">Kaynakça</h2>
+<div class="sources rv"><p>İçerik, temel biyoloji kaynaklarıyla uyumlu olacak şekilde sadeleştirilmiştir. Ayrıntılı anlatım için:</p><ul><li><a href="https://openstax.org/books/biology-2e/pages/8-introduction" target="_blank" rel="noopener noreferrer">OpenStax Biology 2e — Bölüm 8: Photosynthesis</a> (ışık tepkimeleri ve Calvin döngüsü bölümleri).</li></ul><p>Şemalar ve animasyonlar konuyu açıklamak için hazırlanmış öğretici modellerdir; tüm moleküler ayrıntıları göstermez.</p></div>
 </section>
 <footer>Fotosentez · Kloroplast</footer>
 <script>
-const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+}else{
+  document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
+}
+
+const factorInputs=[
+  {input:document.querySelector('#isik-miktari'),output:document.querySelector('#isik-degeri')},
+  {input:document.querySelector('#co2-miktari'),output:document.querySelector('#co2-degeri')}
+];
+const temperature=document.querySelector('#sicaklik');
+const temperatureOutput=document.querySelector('#sicaklik-degeri');
+const rateBar=document.querySelector('#hiz-cubugu');
+const rateMeter=document.querySelector('.ratebar');
+const rateText=document.querySelector('#hiz-metni');
+function updateRate(){
+  const light=Number(factorInputs[0].input.value);
+  const co2=Number(factorInputs[1].input.value);
+  const degrees=Number(temperature.value);
+  const temperatureFactor=Math.max(0,100-Math.abs(degrees-25)*4);
+  const rate=Math.round(Math.min(light,co2,temperatureFactor));
+  factorInputs[0].output.value=`${light}%`;
+  factorInputs[1].output.value=`${co2}%`;
+  temperatureOutput.value=`${degrees} °C`;
+  rateBar.style.width=`${rate}%`;
+  rateMeter.setAttribute('aria-valuenow',String(rate));
+  rateText.textContent=`Tahmini göreli hız: %${rate}`;
+}
+factorInputs.forEach(({input})=>input.addEventListener('input',updateRate));
+temperature.addEventListener('input',updateRate);
+updateRate();
+
+document.querySelector('#quiz-form').addEventListener('submit',event=>{
+  event.preventDefault();
+  const questions=[...document.querySelectorAll('#quiz-form fieldset')];
+  let correct=0;
+  let answered=0;
+  questions.forEach(question=>{
+    const selected=question.querySelector('input:checked');
+    const feedback=question.querySelector('.quiz-feedback');
+    if(!selected){
+      feedback.textContent='Yanıt seçilmedi.';
+      return;
+    }
+    answered++;
+    const correctOption=question.querySelector(`input[value="${question.dataset.answer}"]`);
+    const isCorrect=selected.value===question.dataset.answer;
+    if(isCorrect)correct++;
+    feedback.textContent=isCorrect?'Doğru!':`Yanlış. Doğru yanıt: ${correctOption.parentElement.textContent.trim()}`;
+  });
+  document.querySelector('#quiz-sonuc').textContent=`${questions.length} soruda ${correct} doğru.${answered<questions.length?` ${questions.length-answered} soruyu yanıtlamadınız.`:''}`;
+});
 
 </script>
 </body>
